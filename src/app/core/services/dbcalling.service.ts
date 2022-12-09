@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, timeout } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { IUserResponce } from '../models/iuser.model';
+
+import { RegisterModel } from 'src/app/Store/registerModel';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +14,8 @@ export class DbcallingService {
 
   API_URL = environment.baseUrl;
   baseURL=this.API_URL;
+
+  registerModel: RegisterModel;
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -66,6 +71,16 @@ export class DbcallingService {
     }
   }
 
+  private handleError(errorResponce: HttpErrorResponse) {
+    if (errorResponce.error instanceof ErrorEvent) {
+      console.log("Client side Error ", errorResponce.error.message)
+    }
+    else {
+      console.log("Server side Error ", errorResponce)
+    }
+    return throwError("something went wrong");
+  }
+
   login(userId) {
     try {
       // let userid = JSON.stringify(userId)
@@ -84,17 +99,27 @@ export class DbcallingService {
     }
   }
 
-  getUsers(userid: any): Observable<any> {
-    console.log(userid)
+
+  chkUserExists(mobNo: any): Observable<IUserResponce> {
+    console.log(mobNo);
     debugger;
-    // var userId = JSON.stringify(userid)
-    return this._httpClient.get<any>(this.baseURL ,{
+    var mobileNumber = JSON.stringify(mobNo);
+    return this._httpClient.post<IUserResponce>(this.baseURL+"/register/checkUserExists",JSON.stringify(mobNo),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
-      }),
-      params: userid,
-  })
-      .pipe();
+      })
+    })
+      .pipe(catchError(this.handleError));
   }
 
+  registerUser(registerModel: any): Observable<RegisterModel> {
+    debugger;
+    var dataPass = JSON.stringify(registerModel);
+    return this._httpClient.post<RegisterModel>(this.baseURL+"/register/registerUser", dataPass,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
 }

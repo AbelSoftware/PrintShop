@@ -12,24 +12,36 @@
         <form action="" style="margin-left: none;margin-right: auto;padding: 16px;
               background: transparent;margin-top: 20%;">
           <h4 class="login01">Sign Up Now</h4>
+
+          <br>
+
           <div class="form-group mb-4">
-            <input [(ngModel)]="registerModel.userName" type="text" class="form-control form-control-lg" name="username"
-              autofocus="" placeholder="Username">
+            <select [(ngModel)]="userType" id="userType" name="usertype" placeholder="Select user type">
+              <option *ngFor="let d of userTypeData" [ngValue]="d.id"> {{ d.user }} </option>
+            </select>
+            <div *ngIf="userType==undefined" style="color:red ">First select User Type</div>
             <!-- <div *ngIf="submitted && registerModel.email==''" style="color:red ">Required Email/Username</div> -->
           </div>
+
           <div class="form-group mb-4">
-            <input [(ngModel)]="registerModel.email" type="text" class="form-control form-control-lg" name="Email"
-              autofocus="" placeholder="Email/ Mobile Number">
-            <div *ngIf="submitted && registerModel.email==''" style="color:red ">Required Email/Mobileno</div>
+            <input [(ngModel)]="registerModel.userName" type="text" class="form-control form-control-lg" name="username"
+              id="username" [disabled]="userType == undefined" autofocus="" placeholder="Username">
+            <div *ngIf="submitted && registerModel.userName==''" style="color:red">Required Email/Username</div>
+          </div>
+          <div class="form-group mb-4">
+            <input [(ngModel)]="registerModel.mobileNo" type="text" class="form-control form-control-lg" name="mobileNo"
+              id="mobileNo" autofocus="" placeholder="Mobile Number" type="number" [disabled]="userType == undefined">
+            <div *ngIf="submitted && registerModel.mobileNo==0" style="color:red">Required Email/Mobileno</div>
           </div>
           <div class="form-group mb-4">
             <input type="password" [(ngModel)]="registerModel.password" class="form-control form-control-lg"
-              name="Password" placeholder="Password">
+              name="Password" id="Password" placeholder="Password" [disabled]="userType == undefined">
             <div *ngIf="submitted && registerModel.password==''" style="color:red ">Required Password</div>
           </div>
+
           <div class="form-group mb-4" *ngIf="registerModel.password != ''">
             <input type="password" [(ngModel)]="registerModel.confirmPassword" class="form-control form-control-lg"
-              name="confirmPassword" placeholder="Confirm Password">
+              name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
             <div *ngIf="submitted && registerModel.confirmPassword==''" style="color:red ">Required Confirm Password
             </div>
           </div>
