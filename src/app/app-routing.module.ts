@@ -5,6 +5,7 @@ import { AddShopProfileComponent } from './add-shop-profile/add-shop-profile.com
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ShopInformationComponent } from './shop-information/shop-information.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'addclientprofile', component: AddClientProfileComponent },
       { path: 'addshopprofile', component: AddShopProfileComponent },
+      { path: 'shopinformation', component: ShopInformationComponent },
     ],
   },
   { path: 'home', component: SideNavComponent },

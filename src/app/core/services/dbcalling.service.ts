@@ -5,7 +5,7 @@ import { catchError, timeout } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IUserResponce } from '../models/iuser.model';
 
-import { RegisterModel } from 'src/app/Store/registerModel';
+import { PrintShopRegister } from 'src/app/Store/printshopregister';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class DbcallingService {
   API_URL = environment.baseUrl;
   baseURL=this.API_URL;
 
-  registerModel: RegisterModel;
+  registerModel: PrintShopRegister;
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -100,11 +100,11 @@ export class DbcallingService {
   }
 
 
-  chkUserExists(mobNo: any): Observable<IUserResponce> {
-    console.log(mobNo);
+  chkUserExists(email: any): Observable<IUserResponce> {
+    console.log(email);
     debugger;
-    var mobileNumber = JSON.stringify(mobNo);
-    return this._httpClient.post<IUserResponce>(this.baseURL+"/register/checkUserExists",JSON.stringify(mobNo),{
+    var emailid = JSON.stringify(email);
+    return this._httpClient.post<IUserResponce>(this.baseURL+"/register/checkUserExists",JSON.stringify(email),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -112,10 +112,10 @@ export class DbcallingService {
       .pipe(catchError(this.handleError));
   }
 
-  registerUser(registerModel: any): Observable<RegisterModel> {
+  registerUser(shopRegister: any): Observable<PrintShopRegister> {
     debugger;
-    var dataPass = JSON.stringify(registerModel);
-    return this._httpClient.post<RegisterModel>(this.baseURL+"/register/registerUser", dataPass,{
+    var dataPass = JSON.stringify(shopRegister);
+    return this._httpClient.post<PrintShopRegister>(this.baseURL+"/register/registerUser", dataPass,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

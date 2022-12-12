@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DbcallingService } from '../core/services/dbcalling.service';
-import { RegisterModel } from '../Store/registerModel';
+import { PrintShopRegister } from '../Store/printshopregister';
 
 import swal from 'sweetalert2';
 
@@ -13,83 +13,85 @@ import swal from 'sweetalert2';
 })
 export class RegisterComponent implements OnInit {
 
-  registerModel: RegisterModel;
   submitted = false;
   errorMsg = '';
 
-  userTypeData = [
-    {id: 1, user: "ShopOwner"},
-    {id: 2, user: "Customer"}
-  ];
-
+  shopRegister: PrintShopRegister
   dbResult: any = [];
 
   userType: any;
 
   constructor(private router: Router, private dbCallingService: DbcallingService) { 
-    this.registerModel = new RegisterModel();
+    this.shopRegister = new PrintShopRegister
+    this.userType = "Shop Owner"
   }
 
   ngOnInit(): void {  }
 
-  regClick() {
+  registerClick() {
     debugger;
-    var usertyope = this.userType;
-    this.submitted = true;
+    this.shopRegister;
 
     if (
-      this.registerModel.mobileNo &&
-      this.registerModel.password &&
-      this.registerModel.confirmPassword != ''
-    ) {
-      if (
-        this.registerModel.password ==
-        this.registerModel.confirmPassword
-      ) {
-        try {
-          // let objData={"Mobile_No": this.registerModel.mobileNo};
-          // this.dbCallingService.chkUserExists(objData).subscribe((res) => {
-          //     this.dbResult = res.data;
-          
-          //     if (this.dbResult == undefined) {
-                this.saveUsers();
-          //     } 
-          //     else {
-          //       if (this.dbResult.length > 0) {
-          //         var mobileNo = this.dbResult[0].User_Mobile;
-          //         if (mobileNo != '') {
-          //           swal.fire({
-          //             text: 'This User already Exists!',
-          //             icon: 'warning',
-          //           });
-          //         }
-          //         this.registerModel = new RegisterModel();
-          //       }
-          //     }
-          //   });
-        } 
-        catch (e) {
-          this.errorMsg = 'False';
+          this.shopRegister.User_Name && 
+          this.shopRegister.Password &&
+          this.shopRegister.Confirm_Password != ''
+        ) {
+          if (
+            this.shopRegister.Password ==
+            this.shopRegister.Confirm_Password
+          ) {
+            try {
+              let objData={"Email": this.shopRegister.Email};
+              this.dbCallingService.chkUserExists(objData).subscribe((res) => {
+                debugger;
+                  this.dbResult = res;
+              
+                  if (this.dbResult.data.length == 0) {
+                    this.registerPrintShop();
+                  } 
+                  else {
+                    if (this.dbResult.length > 0) {
+                      var mobileNo = this.dbResult[0].User_Mobile;
+                      if (mobileNo != '') {
+                        swal.fire({
+                          text: 'This User already Exists!',
+                          icon: 'warning',
+                        });
+                      }
+                      
+                    }
+                  }
+                });
+            } 
+            catch (e) {
+              this.errorMsg = 'False';
+            }
+          } else {
+            swal.fire({
+              text: 'Password & Confirm Password should be same!',
+              icon: 'warning',
+            });
+          }
         }
-      } else {
-        swal.fire({
-          text: 'Password & Confirm Password should be same!',
-          icon: 'warning',
-        });
-      }
-    }
   }
 
-  saveUsers() {
+  registerPrintShop() { 
     debugger;
-    let objData= {
-      "userName": this.registerModel.userName,
-      "mobileNo": this.registerModel.mobileNo,
-      "password": this.registerModel.password      
-    };
-    this.dbCallingService.registerUser(objData).subscribe((result) => {
+    this.dbCallingService.registerUser(this.shopRegister).subscribe((result) => {
       debugger;
       this.dbResult = result;
+
+      if(this.dbResult.data.length > 0) {
+
+        swal.fire({
+          text: 'The Shop is Registered!',
+          icon: 'success',
+        });
+      }
+
+      this.shopRegister = new PrintShopRegister();
+      this.router.navigateByUrl('/shopinformation');
     });
       
     

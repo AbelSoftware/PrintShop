@@ -5,14 +5,13 @@ import { LoginModel } from '../Store/LoginModel';
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
-  styleUrls: ['./side-nav.component.css']
+  styleUrls: ['./side-nav.component.css'],
 })
 export class SideNavComponent implements OnInit {
-
   loginModel: LoginModel;
-  userDetails:any = [];
+  userDetails: any = [];
 
-  constructor(private router: Router) { 
+  constructor(private router: Router) {
     this.loginModel = new LoginModel();
   }
 
@@ -29,38 +28,35 @@ export class SideNavComponent implements OnInit {
 
   home() {
     this.router.navigateByUrl('/home');
-   }
+  }
 
-  servicesClick() { 
+  servicesClick() {
     this.router.navigateByUrl('/services');
   }
 
-  aboutUsClick() { 
+  aboutUsClick() {
     this.router.navigateByUrl('/aboutus');
   }
 
-
   loginClick() {
     this.router.navigateByUrl('/login');
-   }
+  }
 
-  registerClick() { 
+  registerPrintShop() {
     this.router.navigateByUrl('/register');
   }
 
+  registerCustomer() { 
 
+    this.router.navigateByUrl('/customerregister');
+  }
 
-
-  openChat() { }
-
-  editProfileClick(temp: LoginModel) { }
-  logoutClick() { 
+  editProfileClick(temp: LoginModel) {}
+  logoutClick() {
     debugger;
     localStorage.removeItem('google_auth');
     this.router.navigateByUrl('/login').then();
   }
-  openPaymentGateway() { }
-  alerts() { }
-  close() { }
 
+  close() {}
 }

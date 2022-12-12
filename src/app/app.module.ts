@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { ShopInformationComponent } from './shop-information/shop-information.component';
 
 export function localStorageSyncReducer(rootReducer: any) {
   return localStorageSync({
@@ -46,7 +47,8 @@ export function localStorageSyncReducer(rootReducer: any) {
     SideNavComponent,
     HomeComponent,
     AddClientProfileComponent,
-    AddShopProfileComponent
+    AddShopProfileComponent,
+    ShopInformationComponent
   ],
   imports: [
     BrowserModule,
