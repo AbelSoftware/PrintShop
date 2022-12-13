@@ -84,6 +84,8 @@
       <input [(ngModel)]="shopRegister.Shop_Name" type="text" placeholder="Enter Shop Name" name="shopname"
         id="shopname" required>
 
+        <p *ngIf="submitted && shopRegister.Shop_Name==''" style="color:red">Required Shop Name</p>
+
       <label for="address"><b>Address</b></label>
       <input [(ngModel)]="shopRegister.Shop_Address" type="text" placeholder="Enter Address" name="address" id="address"
         required>
