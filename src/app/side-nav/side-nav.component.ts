@@ -47,7 +47,6 @@ export class SideNavComponent implements OnInit {
   }
 
   registerCustomer() { 
-
     this.router.navigateByUrl('/customerregister');
   }
 

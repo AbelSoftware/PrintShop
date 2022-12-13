@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { IUserResponce } from '../models/iuser.model';
 
 import { PrintShopRegister } from 'src/app/Store/printshopregister';
+import { CustomerRegister } from 'src/app/Store/customerregister';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class DbcallingService {
   baseURL=this.API_URL;
 
   registerModel: PrintShopRegister;
+  CustomerRegister:CustomerRegister;
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -112,10 +114,22 @@ export class DbcallingService {
       .pipe(catchError(this.handleError));
   }
 
-  registerUser(shopRegister: any): Observable<PrintShopRegister> {
+  registerPrintShopUser(shopRegister: any): Observable<PrintShopRegister> {
     debugger;
     var dataPass = JSON.stringify(shopRegister);
     return this._httpClient.post<PrintShopRegister>(this.baseURL+"/register/registerUser", dataPass,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
+
+
+  registerCustomerUser(CustomerRegister: any): Observable<CustomerRegister> {
+    debugger;
+    var dataPass = JSON.stringify(CustomerRegister);
+    return this._httpClient.post<CustomerRegister>(this.baseURL+"/register/CustomerRegister", dataPass,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

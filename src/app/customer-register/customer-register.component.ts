@@ -1,60 +1,60 @@
-/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DbcallingService } from '../core/services/dbcalling.service';
-import { PrintShopRegister } from '../Store/printshopregister';
+import { CustomerRegister } from '../Store/customerregister';
 
-import Swal from 'sweetalert2';
+import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-customer-register',
+  templateUrl: './customer-register.component.html',
+  styleUrls: ['./customer-register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class CustomerRegisterComponent implements OnInit {
 
   submitted = false;
   errorMsg = '';
 
-  shopRegister: PrintShopRegister
+  CustomerRegister: CustomerRegister
   dbResult: any = [];
 
   userType: any;
 
   constructor(private router: Router, private dbCallingService: DbcallingService) { 
-    this.shopRegister = new PrintShopRegister
+    this.CustomerRegister = new CustomerRegister
     this.userType = "Shop Owner"
   }
 
-  ngOnInit(): void {  }
-
+  ngOnInit(): void {
+    debugger;
+  }
   registerClick() {
     debugger;
-    this.shopRegister;
+    this.CustomerRegister;
 
     if (
-          this.shopRegister.User_Name && 
-          this.shopRegister.Password &&
-          this.shopRegister.Confirm_Password != ''
+          this.CustomerRegister.User_Name && 
+          this.CustomerRegister.Password &&
+          this.CustomerRegister.Confirm_Password != ''
         ) {
           if (
-            this.shopRegister.Password ==
-            this.shopRegister.Confirm_Password
+            this.CustomerRegister.Password ==
+            this.CustomerRegister.Confirm_Password
           ) {
             try {
-              let objData={"Email": this.shopRegister.Email};
+              let objData={"Email": this.CustomerRegister.Email};
               this.dbCallingService.chkUserExists(objData).subscribe((res) => {
                 debugger;
                   this.dbResult = res;
               
                   if (this.dbResult.data.length == 0) {
-                    this.registerPrintShop();
+                    this.CustomerRegistration();
                   } 
                   else {
                     if (this.dbResult.length > 0) {
                       var mobileNo = this.dbResult[0].User_Mobile;
                       if (mobileNo != '') {
-                        Swal.fire({
+                        swal.fire({
                           text: 'This User already Exists!',
                           icon: 'warning',
                         });
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
               this.errorMsg = 'False';
             }
           } else {
-            Swal.fire({
+            swal.fire({
               text: 'Password & Confirm Password should be same!',
               icon: 'warning',
             });
@@ -76,33 +76,26 @@ export class RegisterComponent implements OnInit {
         }
   }
 
-  registerPrintShop() { 
+  
+  CustomerRegistration() { 
     debugger;
-    this.dbCallingService.registerPrintShopUser(this.shopRegister).subscribe((result) => {
+    this.dbCallingService.registerCustomerUser(this.CustomerRegister).subscribe((result) => {
       debugger;
       this.dbResult = result;
 
       if(this.dbResult.data.length > 0) {
 
-        Swal.fire({
+        swal.fire({
           text: 'The Shop is Registered!',
           icon: 'success',
         });
       }
 
-      this.shopRegister = new PrintShopRegister();
+      this.CustomerRegister = new CustomerRegister();
       this.router.navigateByUrl('/shopinformation');
     });
       
     
-  }
-
-  loginClick() {
-    this.router.navigateByUrl('/login');
-  }
-
-  home() {
-    this.router.navigateByUrl('');
   }
 
 }
