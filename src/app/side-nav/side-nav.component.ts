@@ -1,5 +1,8 @@
+/* eslint-disable @ngrx/prefer-action-creator-in-dispatch */
+/* eslint-disable @ngrx/no-typed-global-store */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { LoginModel } from '../Store/LoginModel';
 
 @Component({
@@ -11,7 +14,7 @@ export class SideNavComponent implements OnInit {
   loginModel: LoginModel;
   userDetails: any = [];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private store: Store<any>) {
     this.loginModel = new LoginModel();
   }
 

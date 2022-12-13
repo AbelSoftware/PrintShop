@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router: Router, private dbCallingService: DbcallingService) { 
     this.shopRegister = new PrintShopRegister
-    this.userType = "Shop Owner"
+    this.userType = {id: 1, type: "Shop Owner"};
   }
 
   ngOnInit(): void {  }
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
             this.shopRegister.Confirm_Password
           ) {
             try {
-              let objData={"Email": this.shopRegister.Email};
+              let objData={"Email": this.shopRegister.Email, "userType": this.userType.id,  "userName": this.shopRegister.User_Name};
               this.dbCallingService.chkUserExists(objData).subscribe((res) => {
                 debugger;
                   this.dbResult = res;
@@ -80,12 +80,8 @@ export class RegisterComponent implements OnInit {
 
   registerPrintShop() { 
     debugger;
-<<<<<<< HEAD
+
     this.dbCallingService.registerPrintShopUser(this.shopRegister).subscribe((result) => {
-=======
-    
-    this.dbCallingService.registerUser(this.shopRegister).subscribe((result) => {
->>>>>>> d00e543a95fcd82377935b337146a0ab7c3b1512
       debugger;
       this.dbResult = result;
 

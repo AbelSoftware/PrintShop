@@ -102,11 +102,11 @@ export class DbcallingService {
   }
 
 
-  chkUserExists(email: any): Observable<IUserResponce> {
-    console.log(email);
+  chkUserExists(dataPass: any): Observable<IUserResponce> {
+    console.log(dataPass);
     debugger;
-    var emailid = JSON.stringify(email);
-    return this._httpClient.post<IUserResponce>(this.baseURL+"/register/checkUserExists",JSON.stringify(email),{
+    var emailid = JSON.stringify(dataPass);
+    return this._httpClient.post<IUserResponce>(this.baseURL+"/register/checkUserExists",JSON.stringify(dataPass),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

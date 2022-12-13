@@ -25,14 +25,21 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
 import { ShopInformationComponent } from './shop-information/shop-information.component';
 import { CustomerRegisterComponent } from './customer-register/customer-register.component';
 
+
+
 export function localStorageSyncReducer(rootReducer: any) {
   return localStorageSync({
-   keys: [{'PrintWebsite': {
-     encrypt: state => btoa(state),
-     decrypt: state => atob(state)
-   }}], rehydrate: true
- })(rootReducer);
- }
+    keys: [
+      {
+        PrintWebsite: {
+          encrypt: (state) => btoa(state),
+          decrypt: (state) => atob(state),
+        },
+      },
+    ],
+    rehydrate: true,
+  })(rootReducer);
+}
 
  const googleLoginOptions = {
   scope: 'profile email',
@@ -68,7 +75,6 @@ export function localStorageSyncReducer(rootReducer: any) {
       { metaReducers: [localStorageSyncReducer],}
     ),
 
-    StoreModule.forRoot({}, {}),
      ServiceWorkerModule.register('ngsw-worker.js', {
        enabled: environment.production,
        // Register the ServiceWorker as soon as the application is stable

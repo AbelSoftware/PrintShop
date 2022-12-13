@@ -22,7 +22,7 @@ export class CustomerRegisterComponent implements OnInit {
 
   constructor(private router: Router, private dbCallingService: DbcallingService) { 
     this.CustomerRegister = new CustomerRegister
-    this.userType = "Shop Owner"
+    this.userType = {id: 2, type: "Cutomer"};
   }
 
   ngOnInit(): void {
@@ -42,7 +42,7 @@ export class CustomerRegisterComponent implements OnInit {
             this.CustomerRegister.Confirm_Password
           ) {
             try {
-              let objData={"Email": this.CustomerRegister.Email};
+              let objData={"Email": this.CustomerRegister.Email, "userType": this.userType.id, "userName": this.CustomerRegister.User_Name};
               this.dbCallingService.chkUserExists(objData).subscribe((res) => {
                 debugger;
                   this.dbResult = res;
@@ -86,16 +86,20 @@ export class CustomerRegisterComponent implements OnInit {
       if(this.dbResult.data.length > 0) {
 
         swal.fire({
-          text: 'The Shop is Registered!',
+          text: 'The Customer is Registered!',
           icon: 'success',
         });
       }
 
       this.CustomerRegister = new CustomerRegister();
-      this.router.navigateByUrl('/shopinformation');
+      // this.router.navigateByUrl('/shopinformation');
     });
       
     
+  }
+
+  home() {
+    this.router.navigateByUrl(''); 
   }
 
 }

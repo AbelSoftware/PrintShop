@@ -1,68 +1,81 @@
 <section style="background-color: rgb(181, 141, 219);">
 
-<br><br>
-  
-    <form action="">
-  
-      <div class="container">
-  
-  
-        <h4 class="login01">Sign Up Now</h4>
-  
-        <br><br>
-  
-        <!-- <h1>Register</h1> -->
-        <p>Please fill in this form to create an account.</p>
-        <hr>
-  
-        <label for="userType"><b>UserType:</b></label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        <select name="userType" id="userType">
-          <option value="2">Customer</option>
-        </select>
-        <br>
-        <br>
-  
-        <label for="shopname"><b>Customer_Name</b></label>
-        <input [(ngModel)]="CustomerRegister.Customer_Name" type="text" placeholder="Enter Customer Name" name="CustomerName"
-          id="shopname" required>
-  
-        <label for="address"><b>CustomerAddress</b></label>
-        <input [(ngModel)]="CustomerRegister.Customer_Address" type="text" placeholder="Enter Address" name="address" id="address"
-          required>
-  
-        <label for="mobileno"><b>Customer_mobileNo</b></label>
-        <input [(ngModel)]="CustomerRegister.Customer_MobileNo" type="text" placeholder="Enter Mobile No" name="mobileno"
-          id="mobileno" required>
-  
-          <label for="UserName"><b>UserName</b></label>
-        <input [(ngModel)]="CustomerRegister.User_Name" type="text" placeholder="Enter UserName" name="UserName"
-          id="email" required>
+  <br><br>
 
-        <label for="email"><b>Customer_Email</b></label>
-        <input [(ngModel)]="CustomerRegister.Email" type="text" placeholder="Enter Email" name="email"
-          id="email" required>
+  <form action="" style="width: 60%;align-items: center;margin-left: 20%;">
 
-          <label for="Password"><b>Password</b></label>
-        <input [(ngModel)]="CustomerRegister.Password" type="text" placeholder="Enter password" name="password"
-          id="email" required>
+    <div class="container">
 
-          <label for="confirmPassword"><b>confirmPassword</b></label>
-        <input [(ngModel)]="CustomerRegister.Confirm_Password" type="text" placeholder="Enter confirmPassword" name="confirmPassword"
-          id="email" required>
-  
-  
-        
-        <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-  
-        <button type="submit" class="registerbtn" (click)="registerClick()">Register</button>
+
+      <h4 class="login01">Sign Up Now</h4>
+
+      <br><br>
+
+      <!-- <h1>Register</h1> -->
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+
+      <label for="userType.type"><b>UserType:</b></label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <select name="userType.type" id="userType.id">
+        <option value="2">Customer</option>
+      </select>
+      <br>
+      <br>
+
+      <label for="shopname"><b>Customer_Name</b></label>
+      <input [(ngModel)]="CustomerRegister.Customer_Name" type="text" placeholder="Enter Customer Name"
+        name="CustomerName" id="shopname" required>
+
+      <label for="address"><b>CustomerAddress</b></label>
+      <input [(ngModel)]="CustomerRegister.Customer_Address" type="text" placeholder="Enter Address" name="address"
+        id="address" required>
+
+      <label for="mobileno"><b>Customer_mobileNo</b></label>
+      <input [(ngModel)]="CustomerRegister.Customer_MobileNo" type="text" placeholder="Enter Mobile No" name="mobileno"
+        id="mobileno" required>
+
+      <label for="UserName"><b>UserName</b></label>
+      <input [(ngModel)]="CustomerRegister.User_Name" type="text" placeholder="Enter UserName" name="UserName"
+        id="email" required>
+
+      <label for="email"><b>Customer_Email</b></label>
+      <input [(ngModel)]="CustomerRegister.Email" type="text" placeholder="Enter Email" name="email" id="email"
+        required>
+
+      <label for="Password"><b>Password</b></label>
+      <input [(ngModel)]="CustomerRegister.Password" type="text" placeholder="Enter password" name="password" id="email"
+        required>
+
+      <label for="confirmPassword"><b>confirmPassword</b></label>
+      <input [(ngModel)]="CustomerRegister.Confirm_Password" type="text" placeholder="Enter confirmPassword"
+        name="confirmPassword" id="email" required>
+
+
+
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <button type="submit" class="registerbtn" (click)="registerClick()">Register</button>
+
+      <a (click)="home()" class="banner-btn pix-btns wow fadeInUp" data-wow-delay="0.7s"
+        style="position: fixed;top: 2%;right: 3%;font-size: larger;color: #fff;cursor: pointer;">
+        <i class="fas fa-home"></i> <b> Back To Home </b></a>
+
+      <br>
+      <br>
+
+      <div class="container signin">
+        <p>Already have an account? <a href="#">Sign in</a>.</p>
       </div>
-    </form>
-  
-    <br><br>
-  
-  
-    <div class="container signin">
-      <p>Already have an account? <a href="#">Sign in</a>.</p>
+
+
     </div>
-  
-  </section>
+  </form>
+
+  <br><br>
+
+
+  <div class="container signin">
+    <p>Already have an account? <a href="#">Sign in</a>.</p>
+  </div>
+
+</section>

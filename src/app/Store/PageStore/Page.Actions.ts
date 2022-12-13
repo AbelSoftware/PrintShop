@@ -1,3 +1,4 @@
+/* eslint-disable @ngrx/prefer-action-creator */
 import {Action} from '@ngrx/store';
 export enum PageActionTypes {
   Open_Page = 'OpenPage',

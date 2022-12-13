@@ -9,7 +9,6 @@ export class CustomerRegister {
     Password:String = '';
     Confirm_Password:String = '';
 
-
     CreatedBy: string = '';
     CreatedDate: string = '';
     ModifyBy: string = '';

@@ -1,3 +1,4 @@
+/* eslint-disable @ngrx/prefer-action-creator-in-dispatch */
 /* eslint-disable @ngrx/no-typed-global-store */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,6 +10,8 @@ import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-soc
 import Swal from 'sweetalert2';
 import { OperationdataServiceService } from '../core/services/operationdata.service.service';
 
+import * as pageStore from 'src/app/Store/PageStore/Page.Actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-login',
@@ -22,11 +25,11 @@ export class LoginComponent implements OnInit {
   submitted = false;
   id:any;
   UserList: User[];
-
   user: SocialUser;
 
   constructor(
     private router: Router, 
+    private store: Store<any>,
     private authService: SocialAuthService,
     private operationDataService: OperationdataServiceService
     ) { 
@@ -45,18 +48,7 @@ export class LoginComponent implements OnInit {
   loginClick() {
         this.submitted = true;
           let objData={"User_Id": 1};
-       /* this.operationDataService.getUsers(this.id).subscribe((result)=>{
-            if(result.ServiceResponse===1){
-              alert(result.Msg);
-              sessionStorage.clear();
-              console.log("data:"+result);
-            }
-            else{
-              alert(result.Msg);
-            }
-           },
-          (err)=>alert(err)
-        ) */
+     
            debugger;
         this.operationDataService.getUsers(objData).subscribe((result)=>{
          // this.UserList=result.data;
@@ -76,19 +68,7 @@ export class LoginComponent implements OnInit {
   
         //console.log("in:"+this.UserList);
   
-        if (this.loginModel.email == 'admin' && this.loginModel.password == 'admin') {
-  
-          this.loginModel.id = 1;
-          this.loginModel.email = "sample@sample.com";
-          this.loginModel.name = "John Willson";
-          this.loginModel.password = "1234";
-          this.loginModel.mobileNumber = 9876543210;
-          this.loginModel.userType = 2;
-  
-          debugger;
-  
-  
-        }
+        
       }
 
   forgotPasswordClick() { 
