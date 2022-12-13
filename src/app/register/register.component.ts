@@ -30,6 +30,8 @@ export class RegisterComponent implements OnInit {
 
   registerClick() {
     debugger;
+    this.submitted = true;
+    
     this.shopRegister;
 
     if (
@@ -78,7 +80,12 @@ export class RegisterComponent implements OnInit {
 
   registerPrintShop() { 
     debugger;
+<<<<<<< HEAD
     this.dbCallingService.registerPrintShopUser(this.shopRegister).subscribe((result) => {
+=======
+    
+    this.dbCallingService.registerUser(this.shopRegister).subscribe((result) => {
+>>>>>>> d00e543a95fcd82377935b337146a0ab7c3b1512
       debugger;
       this.dbResult = result;
 
