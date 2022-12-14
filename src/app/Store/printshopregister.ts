@@ -1,5 +1,7 @@
 export class PrintShopRegister {
   Shop_Id: Number = 0;
+  User_Type: Number = 1;
+
   Shop_Name: String = '';
 
   Shop_Address: String = '';

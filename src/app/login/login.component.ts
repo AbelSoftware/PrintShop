@@ -4,86 +4,106 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginModel } from '../Store/LoginModel';
 
-import {User } from '../core/models/iuser.model'
+import { User } from '../core/models/iuser.model';
 import { size } from '../core/models/isize.model';
-import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
+import {
+  GoogleLoginProvider,
+  SocialAuthService,
+  SocialUser,
+} from 'angularx-social-login';
 import Swal from 'sweetalert2';
 import { OperationdataServiceService } from '../core/services/operationdata.service.service';
 
 import * as pageStore from 'src/app/Store/PageStore/Page.Actions';
 import { Store } from '@ngrx/store';
+import { DbcallingService } from '../core/services/dbcalling.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   loginModel: LoginModel;
   sizeList: size[];
   submitted = false;
-  id:any;
+  id: any;
   UserList: User[];
   user: SocialUser;
 
+  dbResult: any = [];
+
   constructor(
-    private router: Router, 
+    private router: Router,
     private store: Store<any>,
     private authService: SocialAuthService,
-    private operationDataService: OperationdataServiceService
-    ) { 
-      debugger;
+    private dbCallingService: DbcallingService
+  ) {
+    debugger;
     this.loginModel = new LoginModel();
   }
 
   ngOnInit(): void {
     debugger;
-    this.authService.authState.subscribe(user => {
+    this.authService.authState.subscribe((user) => {
       this.user = user;
     });
-   
+
+    try{
+      debugger;
+      var result1 = this.store.source['value']['PrintWebsite'].filter((x) => {
+        return x.viewName  == 'Login';
+      });
+
+      if (result1.length > 0) {
+
+        this.loginModel = Object.assign({}, result1[0]);
+
+        if (+this.loginModel.User_Id > 0) {
+          if(this.loginModel.User_Name != '') {
+            this.router.navigateByUrl('home');
+          }
+        }
+      }
+    }
+    catch(e) { }
   }
 
   loginClick() {
-        this.submitted = true;
-          let objData={"User_Id": 1};
-     
-           debugger;
-        this.operationDataService.getUsers(objData).subscribe((result)=>{
-         // this.UserList=result.data;
-         debugger;
-          console.log("status:"+result.data[0].User_Name);
-          })
-  
-          this.operationDataService.getSize().subscribe((result) => {
-             this.sizeList = result.data;
-             debugger;
-             console.log(result);
-             console.log("Size:"+result.data[0].Size_Name);
-  
-            },
-            (err) => console.log(err)
-          );
-  
-        //console.log("in:"+this.UserList);
-  
-        
-      }
+    debugger;
+    this.submitted = true;
+    if(this.loginModel.User_Email != '' || this.loginModel.User_Mobile != '') {
+        if(this.loginModel.User_Pass != '') {
+          this.dbCallingService.getLoginUser(this.loginModel).subscribe((res) => {
+            debugger;
+            this.dbResult = res.data;
+            if(this.dbResult.length > 0) { 
+              if(this.dbResult[0].User_Id > 0) {
+                this.loginModel = this.dbResult[0];
+                this.loginModel.viewName = "Login";
+                this.store.dispatch(new pageStore.OpenPage(Object.assign({} , this.loginModel)));
 
-  forgotPasswordClick() { 
+                this.router.navigateByUrl('/home')
+              }
+            }
+          });
+        }
+    }
+  }
+
+  forgotPasswordClick() {
     this.router.navigateByUrl('/forgotpassword');
   }
 
-  home() { 
+  home() {
     this.router.navigateByUrl('');
   }
 
-  regClick() { 
-    this.router.navigateByUrl('/register');
+  regClick() {
+    this.router.navigateByUrl('/home');
   }
 
-  loginWithGmail(): void { 
+  loginWithGmail(): void {
     debugger;
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((data) => {
       debugger;
@@ -94,7 +114,5 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginWithFacebook() { 
-   
-  }
+  loginWithFacebook() {}
 }

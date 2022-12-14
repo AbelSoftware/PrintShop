@@ -13,14 +13,14 @@
           <h4 class="login01">Login</h4>
           <!-- <h4 *ngIf="submitted && ErrorMsg!=''" style="color:red ">{{ErrorMsg}}</h4> -->
           <div class="form-group mb-4">
-            <input type="text" class="form-control form-control-lg" name="mobileno" id="mobileno"
-              autofocus="" placeholder="Mobile Number">
-            <div *ngIf="submitted && loginModel.email==''" style="color:red ">Required Email/Username</div>
+            <input  [(ngModel)]="loginModel.User_Email" type="text" class="form-control form-control-lg" name="mobileno" id="mobileno"
+              autofocus="" placeholder="Email/ Mobile Number">
+            <div *ngIf="submitted && loginModel.User_Email==''" style="color:red ">Required Email/Username</div>
           </div>
           <div class="form-group mb-4">
-            <input class="form-control form-control-lg"
+            <input  [(ngModel)]="loginModel.User_Pass" class="form-control form-control-lg"
               name="Password" placeholder="Password/ OTP">
-            <div *ngIf="submitted && loginModel.password==''" style="color:red ">Required Password</div>
+            <div *ngIf="submitted && loginModel.User_Pass==''" style="color:red ">Required Password</div>
           </div>
           <button class="btn btn-primary btn-lg btn-block btn-uppercase mb-4 waves-effect waves-button waves-light"
             (click)="loginClick()">Sign In 
@@ -42,7 +42,7 @@
 
 
           <b><a style="color: #fff;margin-left: 23%;">Don't have an acount? </a> <a style="cursor:pointer ;"
-              (click)="regClick()" class="text-light"><strong>Sign Up</strong></a></b>
+              (click)="regClick()" class="text-light"><strong>Register Now!</strong></a></b>
           <br>
           <b><a style="color: #fff;margin-left: 23%;">Forgot Password? </a> <a style="cursor:pointer ;"
               (click)="forgotPasswordClick()" class="text-light"><strong>Click here!</strong></a></b>

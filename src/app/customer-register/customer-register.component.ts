@@ -102,4 +102,8 @@ export class CustomerRegisterComponent implements OnInit {
     this.router.navigateByUrl(''); 
   }
 
+  loginClick() {
+    this.router.navigateByUrl('/login'); 
+  }
+
 }

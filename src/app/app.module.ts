@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 import { ShopInformationComponent } from './shop-information/shop-information.component';
 import { CustomerRegisterComponent } from './customer-register/customer-register.component';
+import { PrintshopProfileComponent } from './printshop-profile/printshop-profile.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 
 
 
@@ -57,7 +59,9 @@ export function localStorageSyncReducer(rootReducer: any) {
     AddClientProfileComponent,
     AddShopProfileComponent,
     ShopInformationComponent,
-    CustomerRegisterComponent
+    CustomerRegisterComponent,
+    PrintshopProfileComponent,
+    CustomerProfileComponent
   ],
   imports: [
     BrowserModule,

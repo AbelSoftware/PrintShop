@@ -38,16 +38,15 @@
             </div>
             <div class="col-lg-5 col-sm-4">
               <div class="header-right-area">
-                <div class="contact-page" *ngIf="userDetails.length == 0">
+                <div class="contact-page" *ngIf="userDetails.length == 0 && loginModel.User_Id == 0"> 
 
 
-                  <a *ngIf="this.loginModel.id == 0" class="btn btn-default btn-primary btn-white"
+                  <a *ngIf="this.loginModel.Id == 0" class="btn btn-default btn-primary btn-white"
                     (click)="loginClick()" style="background-color: #ed1c24 !important;">Login </a>&nbsp;&nbsp;&nbsp;
 
 
                   <!-- <a *ngIf="this.loginModel.id == 0" class="btn btn-default btn-primary btn-white"
                     (click)="registerClick()">Register</a> -->
-
 
                     <button class="btn btn-default btn-primary btn-white">Register</button>
                     <div class="dropdown">
@@ -63,7 +62,7 @@
 
                 </div>
 
-                <!-- <div *ngIf="userDetails.length == 0">
+                <!-- <div *ngIf="userDetails.length == 0 || loginModel.User_Id == 0">
                   <button type="button" (click)="openPaymentGateway()" title="Select your package here"
                     style="background-color: transparent;border: none;font-size: 25px;">
                     <i style="color: #fff;" class="fa fa-dollar-sign"></i>
@@ -82,13 +81,13 @@
                   </button>
                 </div> -->
 
-                <div class="dropdown" *ngIf="userDetails.length != 0">
-                  <button class="dropbtn nav-btn" style="border-style:groove;">
+                <div class="dropdown" *ngIf="loginModel.User_Id > 0">
+                  <button class="dropbtn nav-btn" style="border-style:groove; width: 160px;">
                     <i aria-hidden="true" class="fa fa-user" style="font-size: 25px;width: auto;"></i>
-                    {{userDetails.name}}</button>
+                    {{userDetails.name}} {{ loginModel.User_Name }} </button>
                   <div class="dropdown-content">
-                    <a (click)="editProfileClick(userDetails)"><i class="fa fa-user"></i> Edit Profile </a>
-                    <a (click)="logoutClick()"><i class="fas fa-sign-out-alt"></i> logout </a>
+                    <a (click)="editProfileClick()"><i class="fa fa-user"></i> Edit Profile </a>
+                    <a (click)="logoutClick()"><i class="fas fa-sign-out-alt"></i> Logout </a>
                   </div>
                 </div>
 

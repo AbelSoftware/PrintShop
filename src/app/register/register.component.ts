@@ -1,10 +1,13 @@
+/* eslint-disable @ngrx/prefer-action-creator-in-dispatch */
+/* eslint-disable @ngrx/no-typed-global-store */
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DbcallingService } from '../core/services/dbcalling.service';
 import { PrintShopRegister } from '../Store/printshopregister';
-
+import * as pageStore from 'src/app/Store/PageStore/Page.Actions';
 import Swal from 'sweetalert2';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-register',
@@ -16,12 +19,16 @@ export class RegisterComponent implements OnInit {
   submitted = false;
   errorMsg = '';
 
-  shopRegister: PrintShopRegister
+  shopRegister: PrintShopRegister;
   dbResult: any = [];
 
   userType: any;
 
-  constructor(private router: Router, private dbCallingService: DbcallingService) { 
+  constructor(
+    private router: Router, 
+    private dbCallingService: DbcallingService,
+    private store: Store<any>
+    ) { 
     this.shopRegister = new PrintShopRegister
     this.userType = {id: 1, type: "Shop Owner"};
   }
@@ -92,9 +99,8 @@ export class RegisterComponent implements OnInit {
           icon: 'success',
         });
       }
-
-      this.shopRegister = new PrintShopRegister();
-      this.router.navigateByUrl('/shopinformation');
+      
+      this.router.navigateByUrl('/login');
     });
       
     

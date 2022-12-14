@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddClientProfileComponent } from './add-client-profile/add-client-profile.component';
 import { AddShopProfileComponent } from './add-shop-profile/add-shop-profile.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
 import { CustomerRegisterComponent } from './customer-register/customer-register.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { PrintshopProfileComponent } from './printshop-profile/printshop-profile.component';
 import { RegisterComponent } from './register/register.component';
 import { ShopInformationComponent } from './shop-information/shop-information.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -18,6 +20,8 @@ const routes: Routes = [
       { path: 'addclientprofile', component: AddClientProfileComponent },
       { path: 'addshopprofile', component: AddShopProfileComponent },
       { path: 'shopinformation', component: ShopInformationComponent },
+      { path: 'printshopprofile', component: PrintshopProfileComponent },
+      { path: 'customerprofile', component: CustomerProfileComponent }
 
     ],
   },

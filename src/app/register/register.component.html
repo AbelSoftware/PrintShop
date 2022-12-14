@@ -1,63 +1,7 @@
 <!-- eslint-disable @angular-eslint/template/eqeqeq -->
 <section style="background-color: rgb(181, 141, 219);">
 
-
-  <!-- <div class="container-fluid h-100-vh page-bg">
-    <div class="row align-items-md-center h-100-vh">
-
-      <div class="col-md-4" style="margin-left: 32%;">
-        <form action="" style="margin-left: none;margin-right: auto;padding: 16px;
-              background: transparent;margin-top: 20%;">
-          <h4 class="login01">Sign Up Now</h4>
-
-          <br>
-
-          <div class="form-group mb-4">
-            <label for="userType">UserType:</label>
-              <select name="userType" id="userType">
-                <option value="printshopowner">PrintShop Owner</option>
-              </select>
-          </div>
-
-          <div class="form-group mb-4">
-            <input [(ngModel)]="registerModel.userName" type="text" class="form-control form-control-lg" name="username"
-              id="username" [disabled]="userType == undefined" autofocus="" placeholder="Username">
-            <div *ngIf="submitted && registerModel.userName==''" style="color:red">Required Email/Username</div>
-          </div>
-          <div class="form-group mb-4">
-            <input [(ngModel)]="registerModel.mobileNo" type="text" class="form-control form-control-lg" name="mobileNo"
-              id="mobileNo" autofocus="" placeholder="Mobile Number" type="number" [disabled]="userType == undefined">
-            <div *ngIf="submitted && registerModel.mobileNo==0" style="color:red">Required Email/Mobileno</div>
-          </div>
-          <div class="form-group mb-4">
-            <input type="password" [(ngModel)]="registerModel.password" class="form-control form-control-lg"
-              name="Password" id="Password" placeholder="Password" [disabled]="userType == undefined">
-            <div *ngIf="submitted && registerModel.password==''" style="color:red ">Required Password</div>
-          </div>
-
-          <div class="form-group mb-4" *ngIf="registerModel.password != ''">
-            <input type="password" [(ngModel)]="registerModel.confirmPassword" class="form-control form-control-lg"
-              name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
-            <div *ngIf="submitted && registerModel.confirmPassword==''" style="color:red ">Required Confirm Password
-            </div>
-          </div>
-          <button class="btn btn-primary btn-lg btn-block btn-uppercase mb-4 waves-effect waves-button waves-light"
-            (click)="regClick()">Sign Up
-          </button>
-
-          <b><a style="color: #fff;">Already have an account? </a> <a style="cursor:pointer ;" (click)="loginClick()"
-              class="text-light"><strong>Sign In</strong></a></b>
-
-
-          <a (click)="home()" class="banner-btn pix-btns wow fadeInUp" data-wow-delay="0.7s"
-            style="position: fixed;top: 2%;right: 3%;font-size: larger;color: #fff;cursor: pointer;">
-            <i class="fas fa-home"></i> <b> Back To Home </b></a>
-        </form>
-      </div>
-
-    </div>
-  </div> -->
-  <br><br>
+<br><br>
 
   <form action="" style="width: 60%;align-items: center;margin-left: 20%;">
 
@@ -163,7 +107,7 @@
       <br>
 
       <div class="container signin">
-        <p>Already have an account? <a href="#">Sign in</a>.</p>
+        <p>Already have an account? <a style="cursor: pointer;" (click)="loginClick()">Sign in</a></p>
       </div>
 
 

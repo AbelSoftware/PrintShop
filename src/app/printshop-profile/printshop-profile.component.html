@@ -1,0 +1,134 @@
+<div class="header-top-area">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+  
+        <a href="#">
+          <img class="headerimage" src="assets/images/Newfolder/72.jpg" alt="Site Logo" />
+          <!-- <img class="headerimage" src="../../assets/images/Newfolder/75.jpg" alt="Site Logo" /> -->
+        </a>
+  
+        <div class="col-lg-3 col-sm-4">
+          <div class="header-right-area">
+            <div class="contact-page">
+              <a class="btn btn-default btn-primary btn-white"> </a>
+              <a class="btn btn-default btn-primary btn-white"> </a>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <section style="background-color: rgb(181, 141, 219);">
+
+    <br><br>
+    
+      <form action="" style="width: 60%;align-items: center;margin-left: 20%;">
+    
+        <div class="container">
+    
+    
+          <h4 class="login01"> Profile for- {{ shopRegister.Shop_Name }}</h4>
+         
+    
+          <br>
+    
+          <!-- <h1>Register</h1> -->
+    
+          <hr>
+    
+          <label for="userType.type"><b>UserType:</b></label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <select name="userType.type" id="userType.id">
+            <option value="1">PrintShop Owner</option>
+          </select>
+          <br>
+          <br>
+    
+          <label for="shopname"><b>Shop Name</b></label>
+          <input [(ngModel)]="shopRegister.Shop_Name" type="text" placeholder="Enter Shop Name" name="shopname"
+            id="shopname" required>
+    
+          <label for="address"><b>Address</b></label>
+          <input [(ngModel)]="shopRegister.Shop_Address" type="text" placeholder="Enter Address" name="address" id="address"
+            required>
+    
+          <label for="contactpersonname"><b>Contact_Person Name</b></label>
+          <input [(ngModel)]="shopRegister.Contact_Person_Name" type="text" placeholder="Enter Contact Person Name"
+            name="contactpersonname" id="contactpersonname" required>
+    
+          <label for="contactpersonno"><b>Contact_Person No</b></label>
+          <input [(ngModel)]="shopRegister.Contact_Person_No" type="text" placeholder="Enter Contact Person No"
+            name="contactpersonno" id="contactpersonno" required>
+    
+          <label for="alternativenumber"><b>Alternative Number</b></label>
+          <input [(ngModel)]="shopRegister.Alternative_No" type="text" placeholder="Enter Alternative Number"
+            name="alternativenumber" id="alternativenumber">
+    
+          <label for="email"><b>Working Timings</b></label>
+          <br>
+    
+          <div class="row" style="margin-left: 20px ;">
+            <label for="from">From:</label> &nbsp; &nbsp;
+            <input [(ngModel)]="shopRegister.Working_Time_From" type="time" id="from" name="from">
+    
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    
+            <label for="to">To: </label> &nbsp; &nbsp;
+            <input [(ngModel)]="shopRegister.Working_Time_To" type="time" id="appt" name="appt">
+          </div>
+    
+          <br>
+    
+          <label for="bankname"><b>Bank Name</b></label>
+          <input [(ngModel)]="shopRegister.Bank_Name" type="text" placeholder="Enter Bank Name" name="bankname"
+            id="bankname" required>
+    
+          <label for="accountnumber"><b>Account Number</b></label>
+          <input [(ngModel)]="shopRegister.Accoount_No" type="text" placeholder="Enter Account Number" name="accountnumber"
+            id="accountnumber" required>
+    
+          <label for="ifsccode"><b>IFSC Code</b></label>
+          <input [(ngModel)]="shopRegister.IFSC_Code" type="text" placeholder="Enter Account Number" name="ifsccode"
+            id="ifsccode" required>
+    
+          <label for="username"><b>User Name</b></label>
+          <input [(ngModel)]="shopRegister.User_Name" type="text" placeholder="Enter User Name" name="username"
+            id="username" required>
+    
+          <label for="email"><b>Email</b></label>
+          <input [(ngModel)]="shopRegister.Email" readonly type="text" placeholder="Enter Email" name="email" id="email" required>
+    
+    
+        
+    
+          
+          <hr>
+          
+    
+          <button type="submit" class="updatebtn">Update</button>
+
+          <button type="submit" class="deletebtn" (click)="DeleteClick()">Delete</button>
+    
+    
+    
+          <a (click)="home()" class="banner-btn pix-btns wow fadeInUp" data-wow-delay="0.7s"
+            style="position: fixed;top: 35%;right: 3%;font-size: larger;color: #fff;cursor: pointer;">
+            <i class="fas fa-home"></i> <b> Back To Home </b></a>
+    
+          <br>
+          <br>
+    
+         
+
+        </div>
+      </form>
+    
+      <br><br>
+    
+    
+    
+    
+    
+    </section>

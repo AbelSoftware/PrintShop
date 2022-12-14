@@ -83,29 +83,22 @@ export class DbcallingService {
     return throwError("something went wrong");
   }
 
-  login(userId) {
-    try {
-      // let userid = JSON.stringify(userId)
-      debugger;
-      let userid = new HttpParams().set('userid',userId);
-      debugger;
-      return this._httpClient.get<any>((this.baseURL + 'login') , {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-        }),
-        params: userId,
+  getLoginUser(loginModel) {
+    debugger;
+    var dataPass = JSON.stringify(loginModel);
+    return this._httpClient.post<any>(this.baseURL+"/login/getLoginUser", dataPass,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
       })
-      debugger;
-    } catch (err) {
-      throw err;
-    }
+    })
+      .pipe(catchError(this.handleError));
+
   }
 
 
   chkUserExists(dataPass: any): Observable<IUserResponce> {
     console.log(dataPass);
     debugger;
-    var emailid = JSON.stringify(dataPass);
     return this._httpClient.post<IUserResponce>(this.baseURL+"/register/checkUserExists",JSON.stringify(dataPass),{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -130,6 +123,17 @@ export class DbcallingService {
     debugger;
     var dataPass = JSON.stringify(CustomerRegister);
     return this._httpClient.post<CustomerRegister>(this.baseURL+"/register/CustomerRegister", dataPass,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
+
+  viewProfileDetails(loginModel) {
+    debugger;
+    var dataPass = JSON.stringify(loginModel);
+    return this._httpClient.post<any>(this.baseURL+"/profile/viewProfileDetails", dataPass,{
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })

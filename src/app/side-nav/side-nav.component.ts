@@ -4,6 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { LoginModel } from '../Store/LoginModel';
+import * as pageStore from 'src/app/Store/PageStore/Page.Actions';
+import { DbcallingService } from '../core/services/dbcalling.service';
+import { PrintShopRegister } from '../Store/printshopregister';
+import { CustomerRegister } from '../Store/customerregister';
 
 @Component({
   selector: 'app-side-nav',
@@ -12,10 +16,21 @@ import { LoginModel } from '../Store/LoginModel';
 })
 export class SideNavComponent implements OnInit {
   loginModel: LoginModel;
-  userDetails: any = [];
+  prinshopUser: PrintShopRegister;
+  customerUser: CustomerRegister;
 
-  constructor(private router: Router, private store: Store<any>) {
+
+  userDetails: any = [];
+  userProfile: any = [];
+
+  constructor(
+    private router: Router, 
+    private store: Store<any>,
+    private dbCallingservice: DbcallingService
+    ) {
     this.loginModel = new LoginModel();
+    this.prinshopUser = new PrintShopRegister();
+    this.customerUser = new CustomerRegister();
   }
 
   ngOnInit(): void {
@@ -27,6 +42,25 @@ export class SideNavComponent implements OnInit {
     } else {
       this.userDetails = [];
     }
+
+    try{
+      debugger;
+      var result1 = this.store.source['value']['PrintWebsite'].filter((x) => {
+        return x.viewName  == 'Login';
+      });
+
+      if (result1.length > 0) {
+
+        this.loginModel = Object.assign({}, result1[0]);
+
+        if (+this.loginModel.User_Id > 0) {
+          if(this.loginModel.User_Name != '') {
+            this.router.navigateByUrl('home');
+          }
+        }
+      }
+    }
+    catch(e) { }
   }
 
   home() {
@@ -53,11 +87,29 @@ export class SideNavComponent implements OnInit {
     this.router.navigateByUrl('/customerregister');
   }
 
-  editProfileClick(temp: LoginModel) {}
+  editProfileClick() {
+    debugger;
+
+    if(this.loginModel.User_Type == 1) {
+      this.router.navigateByUrl('/printshopprofile');
+    }
+
+    if(this.loginModel.User_Type == 2) {
+      this.router.navigateByUrl('/customerprofile');
+    }
+    
+  }
   logoutClick() {
     debugger;
     localStorage.removeItem('google_auth');
     this.router.navigateByUrl('/login').then();
+
+    debugger;
+    this.loginModel = new LoginModel();
+    this.store.dispatch(new pageStore.OpenPage(Object.assign({}, this.loginModel)));
+    this.router.navigateByUrl('login');
+
+    
   }
 
   close() {}
