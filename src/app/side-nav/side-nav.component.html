@@ -48,11 +48,19 @@
                   <!-- <a *ngIf="this.loginModel.id == 0" class="btn btn-default btn-primary btn-white"
                     (click)="registerClick()">Register</a> -->
 
-                    <button class="btn btn-default btn-primary btn-white">Register</button>
+                    <!-- <button class="btn btn-default btn-primary btn-white">Register</button>
                     <div class="dropdown">
                       <button class="btn" style="border-left:1px solid #0d8bf2">
                         <i class="fa fa-caret-down"></i>
                       </button>
+                      <div class="dropdown-content">
+                        <a (click)="registerPrintShop()">Shop Owner</a>
+                        <a (click)="registerCustomer()">Customer</a>
+                      </div>
+                    </div> -->
+
+                    <div class="dropdown">
+                      <button class="dropbtn btn btn-default btn-primary btn-white">Register</button>
                       <div class="dropdown-content">
                         <a (click)="registerPrintShop()">Shop Owner</a>
                         <a (click)="registerCustomer()">Customer</a>

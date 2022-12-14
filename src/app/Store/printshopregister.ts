@@ -1,27 +1,28 @@
 export class PrintShopRegister {
   Shop_Id: Number = 0;
   User_Type: Number = 1;
+  User_Id: Number = 0;
 
   Shop_Name: String = '';
 
   Shop_Address: String = '';
 
-  Mobile_Number: string = '';
+  Mobile_Number: String = '';
   Contact_Person_Name: String = '';
-  Contact_Person_No: string = '';
-  Alternative_No: string = '';
+  Contact_Person_No: String = '';
+  Alternative_No: String = '';
 
-  User_Name: string = '';
+  User_Name: String = '';
   Email: String = '';
   Password: String = '';
-  Confirm_Password: string = '';
+  Confirm_Password: String = '';
 
   Bank_Name: String = '';
   Accoount_No: String = '';
   IFSC_Code: String;
 
-  Working_Time_From: string = '';
-  Working_Time_To: string = '';
+  Working_Time_From: String = '';
+  Working_Time_To: String = '';
 
   Role_ID: Number = 0;
 

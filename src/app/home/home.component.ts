@@ -41,6 +41,8 @@ export class HomeComponent implements OnInit {
 
       if (result1.length > 0) {
 
+      
+
         this.loginModel = Object.assign({}, result1[0]);
 
         if (+this.loginModel.User_Id > 0) {

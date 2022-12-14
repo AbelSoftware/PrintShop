@@ -48,11 +48,11 @@ export class SideNavComponent implements OnInit {
       var result1 = this.store.source['value']['PrintWebsite'].filter((x) => {
         return x.viewName  == 'Login';
       });
-
+      debugger;
       if (result1.length > 0) {
 
         this.loginModel = Object.assign({}, result1[0]);
-
+        debugger;
         if (+this.loginModel.User_Id > 0) {
           if(this.loginModel.User_Name != '') {
             this.router.navigateByUrl('home');
@@ -93,6 +93,8 @@ export class SideNavComponent implements OnInit {
     if(this.loginModel.User_Type == 1) {
       this.router.navigateByUrl('/printshopprofile');
     }
+
+    debugger;
 
     if(this.loginModel.User_Type == 2) {
       this.router.navigateByUrl('/customerprofile');

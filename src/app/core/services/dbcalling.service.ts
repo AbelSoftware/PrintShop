@@ -140,4 +140,15 @@ export class DbcallingService {
     })
       .pipe(catchError(this.handleError));
   }
+
+  deleteProfile(loginModel) {
+    debugger;
+    var dataPass = JSON.stringify(loginModel);
+    return this._httpClient.post<any>(this.baseURL+"/profile/deleteProfile", dataPass,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
 }

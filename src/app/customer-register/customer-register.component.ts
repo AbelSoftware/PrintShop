@@ -92,7 +92,7 @@ export class CustomerRegisterComponent implements OnInit {
       }
 
       this.CustomerRegister = new CustomerRegister();
-      // this.router.navigateByUrl('/shopinformation');
+      this.router.navigateByUrl('/login');
     });
       
     

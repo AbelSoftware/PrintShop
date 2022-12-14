@@ -3,6 +3,8 @@ export class CustomerRegister {
     Customer_Id: number = 0;
     User_Type: Number = 2;
 
+    Role_ID: number = 0;
+
     Customer_Name: string = '';
     Customer_Address: string = '';
     Email: String = '';

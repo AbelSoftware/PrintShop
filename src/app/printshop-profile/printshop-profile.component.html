@@ -32,7 +32,7 @@
     
           <h4 class="login01"> Profile for- {{ shopRegister.Shop_Name }}</h4>
          
-    
+          customerRegister
           <br>
     
           <!-- <h1>Register</h1> -->
@@ -100,7 +100,14 @@
           <label for="email"><b>Email</b></label>
           <input [(ngModel)]="shopRegister.Email" readonly type="text" placeholder="Enter Email" name="email" id="email" required>
     
+          
+          <label for="password"><b>Password</b></label>
+          <input [(ngModel)]="shopRegister.Password" type="password" placeholder="Enter Password" name="password"
+            id="password" required>
     
+          <label for="confirmpassword"><b>Confirm Password </b></label>
+          <input [(ngModel)]="shopRegister.Confirm_Password" type="password" placeholder="Confirm Password"
+            name="confirmpassword" id="confirmpassword" required>
         
     
           
@@ -112,10 +119,7 @@
           <button type="submit" class="deletebtn" (click)="DeleteClick()">Delete</button>
     
     
-    
-          <a (click)="home()" class="banner-btn pix-btns wow fadeInUp" data-wow-delay="0.7s"
-            style="position: fixed;top: 35%;right: 3%;font-size: larger;color: #fff;cursor: pointer;">
-            <i class="fas fa-home"></i> <b> Back To Home </b></a>
+  
     
           <br>
           <br>

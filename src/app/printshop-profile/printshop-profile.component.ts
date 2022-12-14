@@ -58,6 +58,7 @@ export class PrintshopProfileComponent implements OnInit {
         debugger;
         if(this.userProfile.data[0].Shop_Id > 0 ) {
           this.shopRegister = this.userProfile.data[0];
+          this.shopRegister.Confirm_Password = this.shopRegister.Password;
         }
       }
     });
