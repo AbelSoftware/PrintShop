@@ -58,7 +58,7 @@
           id="mobileno" required>
   
         <label for="UserName"><b>UserName</b></label>
-        <input [(ngModel)]="customerRegister.User_Name" type="text" placeholder="Enter UserName" name="UserName"
+        <input [(ngModel)]="customerRegister.User_Name" type="text" readonly placeholder="Enter UserName" name="UserName"
           id="UserName" required>
   
         <label for="email"><b>Customer_Email</b></label>
@@ -79,9 +79,9 @@
           <hr>
           
     
-          <button type="submit" class="updatebtn">Update</button>
+          <button type="submit" class="updatebtn" (click)="updateClick()">Update</button>
 
-          <button type="submit" class="deletebtn" (click)="DeleteClick()">Delete</button>
+          <button type="submit" class="deletebtn" (click)="deleteClick()">Delete</button>
   
   
   

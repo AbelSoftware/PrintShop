@@ -151,4 +151,26 @@ export class DbcallingService {
     })
       .pipe(catchError(this.handleError));
   }
+
+  updateCustomerProfile(customerprofile) {
+    debugger;
+    var dataPass = JSON.stringify(customerprofile);
+    return this._httpClient.post<CustomerRegister>(this.baseURL+"/profile/updateCustomerProfile", dataPass,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
+
+  updatePrintShopProfile(shopRegister) {
+    debugger;
+    var dataPass = JSON.stringify(shopRegister);
+    return this._httpClient.post<PrintShopRegister>(this.baseURL+"/profile/updatePrintShopProfile", dataPass,{
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    })
+      .pipe(catchError(this.handleError));
+  }
 }

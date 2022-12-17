@@ -26,6 +26,7 @@ import { ShopInformationComponent } from './shop-information/shop-information.co
 import { CustomerRegisterComponent } from './customer-register/customer-register.component';
 import { PrintshopProfileComponent } from './printshop-profile/printshop-profile.component';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 
 
@@ -61,7 +62,8 @@ export function localStorageSyncReducer(rootReducer: any) {
     ShopInformationComponent,
     CustomerRegisterComponent,
     PrintshopProfileComponent,
-    CustomerProfileComponent
+    CustomerProfileComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

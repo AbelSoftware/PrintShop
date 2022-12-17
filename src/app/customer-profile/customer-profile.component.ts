@@ -69,7 +69,7 @@ viewProfile() {
   });
 }
 
-DeleteClick() {
+deleteClick() {
   
   Swal.fire({
     title: ('Are you sure'),
@@ -111,6 +111,33 @@ deleteProfile() {
     this.router.navigateByUrl('/customerregister');
   });
   
+}
+
+updateClick() {
+  debugger;
+  if((this.customerRegister.Password == this.customerRegister.Confirm_Password) && 
+     (this.customerRegister.Email != '') && (this.customerRegister.User_Name != '')) {
+    this.dbCallingservice.updateCustomerProfile(this.customerRegister).subscribe((res) => {
+      debugger;
+      this.dbResult = res;
+      if(this.dbResult.data[0].ID > 0) {  
+        if(this.dbResult.data[0].NumOfRows > 0) {
+          Swal.fire({
+            text: 'The Profile is updated!',
+            icon: 'success'
+          });
+        }
+
+        this.viewProfile();
+      }
+    });
+  }
+  else {
+    Swal.fire({
+      text: 'Password & Confirm Password should Match!',
+      icon: 'warning'
+    });
+  }
 }
 
 home() {

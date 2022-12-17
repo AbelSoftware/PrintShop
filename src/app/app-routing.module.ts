@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { AddClientProfileComponent } from './add-client-profile/add-client-profile.component';
 import { AddShopProfileComponent } from './add-shop-profile/add-shop-profile.component';
 import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'addshopprofile', component: AddShopProfileComponent },
       { path: 'shopinformation', component: ShopInformationComponent },
       { path: 'printshopprofile', component: PrintshopProfileComponent },
-      { path: 'customerprofile', component: CustomerProfileComponent }
+      { path: 'customerprofile', component: CustomerProfileComponent },
+      { path: 'aboutus', component: AboutUsComponent }
 
     ],
   },

@@ -1,3 +1,4 @@
+/* eslint-disable @ngrx/prefer-action-creator-in-dispatch */
 /* eslint-disable @ngrx/no-typed-global-store */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -6,6 +7,8 @@ import Swal from 'sweetalert2';
 import { DbcallingService } from '../core/services/dbcalling.service';
 import { LoginModel } from '../Store/LoginModel';
 import { PrintShopRegister } from '../Store/printshopregister';
+
+import * as pageStore from 'src/app/Store/PageStore/Page.Actions';
 
 
 @Component({
@@ -19,6 +22,7 @@ export class PrintshopProfileComponent implements OnInit {
   loginModel: LoginModel;
 
   userProfile: any = [];
+  dbResult: any = [];
 
   constructor(
     private router: Router,
@@ -64,7 +68,7 @@ export class PrintshopProfileComponent implements OnInit {
     });
   }
 
-  DeleteClick() {
+  deleteClick() {
     
     Swal.fire({
       title: ('Are you sure'),
@@ -87,9 +91,50 @@ export class PrintshopProfileComponent implements OnInit {
     });
   }
 
-
   deleteProfile() { 
     debugger;
+  this.dbCallingservice.deleteProfile(this.shopRegister).subscribe((res) => {
+    debugger;
+    this.dbResult = res;
+
+    if(this.dbResult.data[0].NumOfRows > 0) {
+      Swal.fire({
+        text: 'Your Profile is Deleted !',
+        icon: 'success'
+      });
+
+      this.loginModel = new LoginModel();
+      this.store.dispatch(new pageStore.OpenPage(Object.assign({} , this.loginModel)));
+    }
+    this.router.navigateByUrl('/customerregister');
+  });
+  }
+
+  updateClick() {
+    debugger;
+  if((this.shopRegister.Password == this.shopRegister.Confirm_Password) && 
+     (this.shopRegister.Email != '') && (this.shopRegister.User_Name != '')) {
+    this.dbCallingservice.updatePrintShopProfile(this.shopRegister).subscribe((res) => {
+      debugger;
+      this.dbResult = res;
+      if(this.dbResult.data[0].ID > 0) {  
+        if(this.dbResult.data[0].NumOfRows > 0) {
+          Swal.fire({
+            text: 'The Profile is updated!',
+            icon: 'success'
+          });
+        }
+
+        this.viewProfile();
+      }
+    });
+  }
+  else {
+    Swal.fire({
+      text: 'Password & Confirm Password should Match!',
+      icon: 'warning'
+    });
+  }
   }
 
   home() {
