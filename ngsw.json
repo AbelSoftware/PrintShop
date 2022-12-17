@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1670317655291,
+  "timestamp": 1671281309874,
   "index": "https://AbelSoftware.github.io/PrintShop/index.html",
   "assetGroups": [
     {
@@ -13,10 +13,10 @@
       "urls": [
         "https://AbelSoftware.github.io/PrintShop/favicon.ico",
         "https://AbelSoftware.github.io/PrintShop/index.html",
-        "https://AbelSoftware.github.io/PrintShop/main.8df7a27bce50a5d7.js",
+        "https://AbelSoftware.github.io/PrintShop/main.53321a96f6d737d0.js",
         "https://AbelSoftware.github.io/PrintShop/manifest.webmanifest",
         "https://AbelSoftware.github.io/PrintShop/polyfills.871633f19a55e4bb.js",
-        "https://AbelSoftware.github.io/PrintShop/runtime.ae674de593313bbc.js",
+        "https://AbelSoftware.github.io/PrintShop/runtime.93eaf5a35c214a5e.js",
         "https://AbelSoftware.github.io/PrintShop/styles.bad58985ce790e0a.css"
       ],
       "patterns": []
@@ -110,6 +110,7 @@
         "https://AbelSoftware.github.io/PrintShop/assets/images/Newfolder/logo1.png",
         "https://AbelSoftware.github.io/PrintShop/assets/images/Newfolder/new.jpg",
         "https://AbelSoftware.github.io/PrintShop/assets/images/Newfolder/stationary-items.jpg",
+        "https://AbelSoftware.github.io/PrintShop/assets/images/Shapes/2.png",
         "https://AbelSoftware.github.io/PrintShop/assets/images/bg/bg-pattent1.jpg",
         "https://AbelSoftware.github.io/PrintShop/assets/images/login/10.jpg",
         "https://AbelSoftware.github.io/PrintShop/assets/images/login/11.jpg",
@@ -281,6 +282,7 @@
     "https://AbelSoftware.github.io/PrintShop/assets/images/Newfolder/logo1.png": "0f5506eaa800851b58f63cd3a352c6f9a65c38be",
     "https://AbelSoftware.github.io/PrintShop/assets/images/Newfolder/new.jpg": "1f7306fc35a5c712ec0bb2dcac627cf4f36a1af0",
     "https://AbelSoftware.github.io/PrintShop/assets/images/Newfolder/stationary-items.jpg": "5704077172e4d051c764bd4bf0606a169f75cc4e",
+    "https://AbelSoftware.github.io/PrintShop/assets/images/Shapes/2.png": "f00cba7a0a75b8c8488f277a7829754892ceda8b",
     "https://AbelSoftware.github.io/PrintShop/assets/images/bg/bg-pattent1.jpg": "b7b8a954856a0fc915bddc8f8722e8f8d9642ba0",
     "https://AbelSoftware.github.io/PrintShop/assets/images/login/10.jpg": "6d4432cc79f8e5c3b0faf141b038098b2bbf390b",
     "https://AbelSoftware.github.io/PrintShop/assets/images/login/11.jpg": "71a8d648e38c8d243fe91921585c6e4988c3840f",
@@ -366,11 +368,11 @@
     "https://AbelSoftware.github.io/PrintShop/assets/webfonts/icomoon_6f81deb4.ttf": "0135157ea8787ff2c5ec63f098fdbee63a93f93e",
     "https://AbelSoftware.github.io/PrintShop/assets/webfonts/icomoon_6f81deb4.woff": "068ecf35cec118ebdfa8d066f5e6cb4ffaa656d4",
     "https://AbelSoftware.github.io/PrintShop/favicon.ico": "22f6a4a3bcaafafb0254e0f2fa4ceb89e505e8b2",
-    "https://AbelSoftware.github.io/PrintShop/index.html": "689c208bf862b81f342e5d44d852555cd6865642",
-    "https://AbelSoftware.github.io/PrintShop/main.8df7a27bce50a5d7.js": "ee7f767104b91795f568f21d900d3833b64b24c3",
+    "https://AbelSoftware.github.io/PrintShop/index.html": "ab51c83ce223ff9930240eddcfc2f794c62b520a",
+    "https://AbelSoftware.github.io/PrintShop/main.53321a96f6d737d0.js": "e62d1d4a6562604fa3fc0953d3417533c2d315cb",
     "https://AbelSoftware.github.io/PrintShop/manifest.webmanifest": "e39395ef6580d0eeefe2dddbcc1ea37513a48df3",
     "https://AbelSoftware.github.io/PrintShop/polyfills.871633f19a55e4bb.js": "a1d8a9aa81eb1e5cbc0e19af093e8ccabe1ac630",
-    "https://AbelSoftware.github.io/PrintShop/runtime.ae674de593313bbc.js": "454fe0a2298ff42a05e7bb636faeef7939ca58d0",
+    "https://AbelSoftware.github.io/PrintShop/runtime.93eaf5a35c214a5e.js": "25c6cb24a425d7f774e3fbfca62e487594fa8a6f",
     "https://AbelSoftware.github.io/PrintShop/styles.bad58985ce790e0a.css": "2c7d5316a4a188377fe3c92919a77ea27c90d219"
   },
   "navigationUrls": [
